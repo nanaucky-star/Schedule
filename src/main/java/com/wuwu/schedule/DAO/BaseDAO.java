@@ -1,6 +1,6 @@
 package com.wuwu.schedule.DAO;
 
-import schedule.Util.JDBCUtil;
+import com.wuwu.schedule.util.JDBCUtil;
 
 import java.lang.reflect.Field;
 import java.sql.*;
