@@ -3,4 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+
+    <filter>
+            <filter-name>loggingFilter</filter-name>
+            <filter-class>com.wuwu.schedule.test.filter.LoggingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+            <filter-name>loggingFilter</filter-name>
+            <url-pattern>/servlet1</url-pattern>
+    </filter-mapping>
 </web-app>
