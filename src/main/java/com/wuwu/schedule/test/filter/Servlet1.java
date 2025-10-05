@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Servlet1 extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("servlet1 service invoked");
+        System.out.println("servlet1 service invoked 测试");
         resp.getWriter().write("servlet1 response");
     }
 }

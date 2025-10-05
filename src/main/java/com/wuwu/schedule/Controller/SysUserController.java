@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -44,6 +45,10 @@ public class SysUserController extends BaseController {
         }else if(!MD5Util.encrypt(password).equals(loginUser.getUserPwd())){
             resp.sendRedirect("/loginUserPwdError.html");
         }else{
+            //登陆成功后将登陆的用户信息放入session
+            HttpSession session=req.getSession();
+            session.setAttribute("sysUser",loginUser);
+
             resp.sendRedirect("/loginSuccess.html");
         }
     }
