@@ -1,9 +1,13 @@
 package com.wuwu.schedule.Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wuwu.schedule.POJO.SysUser;
 import com.wuwu.schedule.Service.Impl.SysUserServiceImpl;
 import com.wuwu.schedule.Service.SysUserService;
+import com.wuwu.schedule.common.Result;
+import com.wuwu.schedule.common.ResultCodeEnum;
 import com.wuwu.schedule.util.MD5Util;
+import com.wuwu.schedule.util.WebUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -32,6 +36,21 @@ public class SysUserController extends BaseController {
         }
 
         resp.sendRedirect("/login");
+    }
+
+    protected void checkUsernameUsed(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String username = req.getParameter("username");
+
+        SysUser user = userService.findByUsername(username);
+
+        Result result=Result.ok(null);
+
+        if(user!=null){
+            result=Result.build(null, ResultCodeEnum.USERNAME_USED);
+        }
+
+        WebUtil.writeJson(resp,result);
+
     }
 
 
